@@ -1,44 +1,38 @@
 # SidekiqMetrics
 
-[![Build Status](https://magnum.travis-ci.com/)](https://magnum.travis-ci.com/)
-[![Code Climate](https://codeclimate.com/)](https://codeclimate.com/)
-[![Code Climate](https://codeclimate.com/)](https://codeclimate.com/)
+Sends sidekiq metrics to CloudWatch.
 
-To these the sidekiq_metrics, run these commands:
+## Setup
 
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'sidekiq_metrics'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install sidekiq_metrics
+```bash
+git clone git@github.com:gitresolve/sidekiq_metrics.git
+cd sidekiq_metrics
+bundle
+```
 
 ## Usage
 
-<pre>
-git clone https://github.com/tongueroo/sidekiq_metrics.git
-mv sidekiq_metrics <project_name>
-cd <project_name>
-rake rename
-rm -rf .git
-git init
-git add .
-git commit -m 'init commit'
-</pre>
+Configure env variables in `.env` or `.env.prod`.  Important env variables are:
 
-## Contributing
+* REDIS_URL
+* REDIS_NAMESPACE
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+```bash
+sidekiq_metrics chart --dimension gr-prod
+```
+
+Send the metrics every 5 seconds
+
+```bash
+sidekiq_metrics chart --dimension gr-prod --sleep 5
+```
+
+## Custom Metric Names
+
+A CloudWatch Metric has a namespace, metric name and dimensions.
+
+For sidekiq metrics:
+
+* namespace - Sidekiq
+* metric name - QueueSize, Latency, Retries
+* dimensions - gr-prod, funnel-prod
