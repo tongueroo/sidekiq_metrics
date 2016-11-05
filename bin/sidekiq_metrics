@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+$:.unshift(File.expand_path('../../lib', __FILE__))
+require 'sidekiq_metrics'
+require 'sidekiq_metrics/cli'
+
+SidekiqMetrics::CLI.start(ARGV)
