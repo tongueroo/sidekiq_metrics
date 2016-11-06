@@ -1,0 +1,3 @@
+#!/bin/bash -xe
+
+ufo ship sidekiq-chart --cluster ops

@@ -15,3 +15,6 @@ test/tmp
 test/version_tmp
 tmp
 .env*
+/ufo/output
+/ufo/docker_image_name*.txt
+/ufo/version

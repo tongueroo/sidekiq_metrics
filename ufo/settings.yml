@@ -1,0 +1,3 @@
+image: 467446852200.dkr.ecr.us-east-1.amazonaws.com/sidekiq_metrics
+service_cluster:
+  default: ops
