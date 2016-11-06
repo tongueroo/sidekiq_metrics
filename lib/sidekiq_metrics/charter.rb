@@ -42,7 +42,8 @@ module SidekiqMetrics
     def build_metrics(data)
       metrics = []
       data.each do |metric_name, count|
-        next unless [:queue_size, :latency].include?(metric_name)
+        # whitelist only the metrics I'm using to save costs
+        next unless [:latency].include?(metric_name)
         metric = {
           metric_name: camelize(metric_name),
           timestamp: Time.now,
